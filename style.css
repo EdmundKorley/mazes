@@ -10,9 +10,13 @@ body {
   display: flex;
   flex-direction: column-reverse;
   font-family: 'Source Serif Pro', serif;
-  /* This centers our sketch horizontally. */
+  /* This centers our canvas horizontally. */
   justify-content: center;
-
-  /* This centers our sketch vertically. */
+  /* This centers our canvas vertically. */
   align-items: center;
+}
+
+.descript {
+  padding: 1em;
+  max-width: 450px;
 }

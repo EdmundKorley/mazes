@@ -2,21 +2,24 @@
  * Our depth first search maze building routine.
  */
 
-var stack = []; // Stack for our DFS
+let stack = []; // Stack for our DFS
 
 function DepthFirstSearch() {
+  if (current == undefined) {
+    current = grid[0];
+  }
   current.visited = true;
   current.highlight();
 
   // Pick a random neighbor
-  var next = current.checkNeighbors();
+  let next = current.randomNeighbor();
   if (next) {
     // Mark as visited
     next.visited = true;
     // Our stack
     stack.push(current);
     // Remove walls
-    removeWalls(current, next);
+    manipulateWalls(current, next);
     // Move to next node
     current = next;
   } else if (stack.length > 0) {

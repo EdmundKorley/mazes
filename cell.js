@@ -7,9 +7,10 @@ function Cell(i, j) {
   this.walls = { left: true, right: true, top: true, bottom: true };
   this.visited = false;
 
+  // Draw on canvas
   this.show = function() {
-    var x = this.i * side;
-    var y = this.j * side;
+    let x = this.i * side;
+    let y = this.j * side;
     stroke(255);
     if (this.walls.top)
       line(x, y, x+side, y);
@@ -27,27 +28,39 @@ function Cell(i, j) {
     }
   }
 
-  this.checkNeighbors = function() {
-    var top = grid[index(this.i, this.j-1)]
-    var bottom = grid[index(this.i, this.j+1)]
-    var left = grid[index(this.i+1, this.j)]
-    var right = grid[index(this.i-1, this.j)]
-    var neighbors = [top, right, bottom, left].filter(function(item) {
-      return item !== undefined && !item.visited;
+  // Get all neighbors indicies
+  this.getNeighbors = function() {
+    let top = index(this.i, this.j-1)
+    let bottom = index(this.i, this.j+1)
+    let left = index(this.i+1, this.j)
+    let right = index(this.i-1, this.j)
+    return [top, right, bottom, left].filter(function(node) {
+      return node !== -1;
+    });
+  }
+
+  // Get a random unvisited neighbor
+  this.randomNeighbor = function() {
+    let neighbors = this.getNeighbors().filter(function(nodeId) {
+      return !grid[nodeId].visited;
+    }).map(function(nodeId) {
+      return grid[nodeId];
     });
 
     if (neighbors.length) {
-      var r = floor(random(0, neighbors.length));
+      let r = floor(random(0, neighbors.length));
       return neighbors[r];
     }
     return undefined;
   }
 
+  // Color active cell
   this.highlight = function() {
-    var x = this.i * side;
-    var y = this.j * side;
+    let x = this.i * side;
+    let y = this.j * side;
     noStroke();
     fill(66, 139, 202);
-    rect(x, y, side, side);
+    rect(x, y, side-1, side-1);
+    return this;
   }
 }

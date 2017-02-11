@@ -1,31 +1,33 @@
-var cols, rows, current; // The current x,y on the grid that we are on
-var side = 30;
-var grid = [];
+let cols, rows, current; // The current x,y on the grid that we are on
+let side = 30;
+let grid = [];
 
 function setup() {
-  createCanvas(side * 20 + 1, side * 20 + 1);
-  // frameRate(5);
+  createCanvas(side * 15 + 1, side * 15 + 1);
+  // frameRate(10);
   cols = floor(width/side);
   rows = floor(height/side);
 
+  // Storing the cells in a linear array data structure
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
-      var cell = new Cell(col, row);
+      let cell = new Cell(col, row);
       grid.push(cell);
     }
   }
 
-  current = grid[0];
+  // Initialize the algorithm we choose
+  Krusal.prototype.initialize();
 }
 
 function draw() {
   background(41, 47, 52);
-
   for (let i = 0; i < grid.length; i++) {
     grid[i].show();
   }
 
-  DepthFirstSearch();
+  // DepthFirstSearch();
+  Krusal();
 }
 
 function index(i, j) {
@@ -34,21 +36,21 @@ function index(i, j) {
   return i + j * cols;
 }
 
-function removeWalls(cellA, cellB) {
+function manipulateWalls(cellA, cellB, present = false) {
   x = cellA.i - cellB.i;
   y = cellA.j - cellB.j;
   // debugger;
   if (x === 1) { // B-A
-    cellA.walls.left = false;
-    cellB.walls.right = false;
+    cellA.walls.left = present;
+    cellB.walls.right = present;
   } else if (x === -1) { // A-B
-    cellA.walls.right = false;
-    cellB.walls.left = false;
+    cellA.walls.right = present;
+    cellB.walls.left = present;
   } else if (y === 1) { // B|A
-    cellA.walls.top = false;
-    cellB.walls.bottom = false;
+    cellA.walls.top = present;
+    cellB.walls.bottom = present;
   } else if (y === -1) { // A|B
-    cellA.walls.bottom = false;
-    cellB.walls.top = false;
+    cellA.walls.bottom = present;
+    cellB.walls.top = present;
   }
 }

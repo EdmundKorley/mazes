@@ -3,12 +3,40 @@
   <head>
     <meta charset="utf-8">
     <title>Pathfinding Algorithms</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
     <link rel="stylesheet" href="style.css"></link>
   </head>
   <body>
-        <div class="descript">A maze generator that uses a randomized depth-first search approach with a <em>recursive</em> backtracker.</div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js" charset="utf-8"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/addons/p5.dom.js"></script>
+    <div><small>Edmund Korley, 2017.</small></div>
+    <pre><code class="javascript">
+      // Make the center cell the current cell and mark it as visited
+      let current = grid[middle];
+      // While there are unvisited cells
+      while (grid.hasUnvisitedNeighbors()) {
+        current.visited = true;
+        // Pick a random unvisited neighbor
+        let next = current.randomNeighbor();
+        if (next) {
+          // Mark as visited
+          next.visited = true;
+          // Push the current cell to the stack
+          stack.push(current);
+          // Remove the wall between the current and chosen cell
+          removeWallsBetween(current, next);
+          // Move to next node
+          current = next;
+        } else if (stack.length > 0) { // Else if stack is not empty
+          current = stack.pop(); // Pop a cell from the stack
+        }
+      }
+    </code></pre>
+    <div class="descript">
+      A maze generator that uses a randomized depth-first search approach with a <em>recursive</em> backtracker.
+      The algorithm can be abstracted will the following code:
+    </div>
+    <script src="//cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js" charset="utf-8"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js" charset="utf-8"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/addons/p5.dom.js" charset="utf-8"></script>
     <script src="pathfinding.js"></script>
     <script src="depthfirstsearch.js"></script>
     <script src="cell.js"></script>

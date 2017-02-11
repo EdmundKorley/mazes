@@ -6,7 +6,7 @@ let stack = []; // Stack for our DFS
 
 function DepthFirstSearch() {
   if (current == undefined) {
-    current = grid[0];
+    current = grid[floor(grid.length / 2)];
   }
   current.visited = true;
   current.highlight();

@@ -1,4 +1,5 @@
 /* style.css */
+@import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
 
 html, body {
   height: 100%;
@@ -7,7 +8,8 @@ html, body {
 body {
   margin: 0;
   display: flex;
-
+  flex-direction: column-reverse;
+  font-family: 'Source Serif Pro', serif;
   /* This centers our sketch horizontally. */
   justify-content: center;
 

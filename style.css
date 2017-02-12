@@ -32,6 +32,10 @@ body {
   cursor: pointer;
 }
 
+.navigation .active {
+  text-decoration: underline #428BCA;
+}
+
 .footer {
   position: fixed;
   bottom: 20px;

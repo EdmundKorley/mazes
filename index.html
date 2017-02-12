@@ -11,7 +11,7 @@
     <!-- Header and footer -->
     <div class="navigation">
       <ul>
-        <li>Depth First Search + Backtracking</li>
+        <li class="active">Depth First Search + Backtracking</li>
         <li>Randomized Krusal's Algorithm</li>
         <li>Randomized Prim's Algorithm</li>
         <li>Recursive Division Method</li>
@@ -38,8 +38,9 @@
           removeWallsBetween(current, next);
           // Move to next node
           current = next;
-        } else if (stack.empty == 0) { // Else if stack is not empty,
-          current = stack.pop(); // pop a cell off the stack (backtrack)
+        // Else if the stack isn't empty,
+        } else if (stack.empty == 0) {
+          current = stack.pop(); // pop a cell off (backtrack)
         }
       }
     </code></pre>

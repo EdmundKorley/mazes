@@ -20,3 +20,26 @@ body {
   padding: 1em;
   max-width: 450px;
 }
+
+.navigation {
+  position: fixed;
+  top: 20px;
+  width: 100%;
+}
+
+.navigation li:hover {
+  text-decoration: underline green;
+  cursor: pointer;
+}
+
+.footer {
+  position: fixed;
+  bottom: 20px;
+}
+
+a {
+  color: green;
+}
+a:visited {
+  color: green;
+}

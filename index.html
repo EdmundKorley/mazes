@@ -2,14 +2,27 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pathfinding Algorithms</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
     <link rel="stylesheet" href="style.css"></link>
   </head>
   <body>
-    <div><small>Edmund Korley, 2017.</small></div>
+    <!-- Header and footer -->
+    <div class="navigation">
+      <ul>
+        <li>Depth First Search + Backtracking</li>
+        <li>Randomized Krusal's Algorithm</li>
+        <li>Randomized Prim's Algorithm</li>
+        <li>Recursive Division Method</li>
+        <li>Cellular Automaton</li>
+      </ul>
+    </div>
+    <div class="footer"><small><a href="https://edmundkorley.com">Edmund Korley</a>, 2017.</small></div>
+
     <pre><code class="javascript">
-      // Make the center cell the current cell and mark it as visited
+      // Given a grid (array-like representation of maze) and stack,
+      // make the center cell the current cell and mark it as visited
       let current = grid[middle];
       // While there are unvisited cells
       while (grid.hasUnvisitedNeighbors()) {
@@ -25,14 +38,15 @@
           removeWallsBetween(current, next);
           // Move to next node
           current = next;
-        } else if (stack.length > 0) { // Else if stack is not empty
-          current = stack.pop(); // Pop a cell from the stack (backtrack)
+        } else if (stack.empty == 0) { // Else if stack is not empty,
+          current = stack.pop(); // pop a cell off the stack (backtrack)
         }
       }
     </code></pre>
     <div class="descript">
       A maze generator that uses a randomized depth-first search approach with a <em>recursive</em> backtracker.
-      The algorithm can be abstracted will the following code:
+      You may use actual function recursion and the call stack to implement this or, in our case, a stack (on the heap) for lighter stack frames.
+      This algorithm can be abstracted as the following routine:
     </div>
     <script src="//cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js" charset="utf-8"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js" charset="utf-8"></script>

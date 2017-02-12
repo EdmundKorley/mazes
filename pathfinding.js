@@ -17,7 +17,7 @@ function setup() {
   }
 
   // Initialize the algorithm we choose
-  // Krusal.prototype.initialize();
+  Krusal.prototype.initialize();
 
   // Syntax highlighting for descript
   hljs.initHighlighting();
@@ -29,8 +29,8 @@ function draw() {
     grid[i].show();
   }
 
-  DepthFirstSearch();
-  // Krusal();
+  // DepthFirstSearch();
+  Krusal();
 }
 
 function index(i, j) {

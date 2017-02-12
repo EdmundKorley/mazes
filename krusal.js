@@ -19,6 +19,8 @@ function Krusal() {
     if (edgesList.length && rootA !== rootB) {
       vertexA.highlight();
       vertexB.highlight();
+      vertexA.visited = true;
+      vertexB.visited = true;      
       manipulateWalls(vertexA, vertexB);
       edgesDisjointSet.union(rootA, rootB);
     }

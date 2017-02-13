@@ -3,3 +3,5 @@
 - [X] Depth First Search + Backtracking
 - [X] Randomized Kruskal's Algorithm
 - [ ] Randomized Prim's Algorithm
+- [ ] Recursive Division Method
+- [ ] Cellular Automaton

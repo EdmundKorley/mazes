@@ -1,7 +1,6 @@
 /*
  * Our depth first search maze building routine.
  */
-
 let stack = []; // Stack for our DFS
 
 function DepthFirstSearch(resize = false) {

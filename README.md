@@ -5,3 +5,7 @@
 - [ ] Randomized Prim's Algorithm
 - [ ] Recursive Division Method
 - [ ] Cellular Automaton
+
+![A maze generated with Krusal's algorithm](KrusalGeneratedMaze.gif)
+
+_A maze generated with a randomized version of Krusal's algorithm._

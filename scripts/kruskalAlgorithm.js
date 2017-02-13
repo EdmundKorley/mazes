@@ -1,11 +1,17 @@
 /*
- * A randomized implementation of Krusal's algorithm for maze generation.
+ * A randomized implementation of Kruskal's algorithm for maze generation.
  */
 
 let edges = new Set();
 let edgesList, vertexA, vertexB, edgesDisjointSet;
 
-function Krusal() {
+function Kruskal(resize = false) {
+  console.log('Krusal');
+  // debugger;
+  algorithmCallback = Kruskal;
+  if (resize) {
+    setup();
+  }
   if (edgesList.length) {
     // Splice out random edge
     let randomIndex = floor(random(0, edgesList.length));
@@ -20,7 +26,7 @@ function Krusal() {
       vertexA.highlight();
       vertexB.highlight();
       vertexA.visited = true;
-      vertexB.visited = true;      
+      vertexB.visited = true;
       manipulateWalls(vertexA, vertexB);
       edgesDisjointSet.union(rootA, rootB);
     }
@@ -28,9 +34,9 @@ function Krusal() {
 }
 
 // Our intialization routine
-Krusal.prototype.initialize = function () {
+Kruskal.prototype.initialize = function () {
   for (let i = 0; i < grid.length; i++) {
-    // Creating the set of edges for Krusal's algorithm
+    // Creating the set of edges for Kruskal's algorithm
     let neighborIndicies = grid[i].getNeighbors()
     neighborIndicies.forEach(function (index) {
       let key = [i, index].sort().toString();
@@ -47,3 +53,26 @@ Krusal.prototype.initialize = function () {
   // Zero walls
   Cell.prototype.walls = { left: false, right: false, top: false, bottom: false };
 }
+
+// Descript and psuedocode
+Kruskal.prototype.descript = function () { return `
+  A maze generator that uses a randomized version of Krusal's algorithm for finding a minimum spanning tree in an undirected graph, which is a similar problem to maze generation. This algorithm can be abstracted as the follows:
+  `; }
+Kruskal.prototype.algorithm = function () { return `
+  // A grid is initialized with all cells belonging to a unique set (disjoint sets)
+  const ds = new DisjointSet(grid);
+  // While there are unvisited edges
+  while (grid.hasUnvisitedEgdes()) {
+    // Pick a random unvisited neighbor
+    edge = grid.spliceRandomEdge();
+    vertexA, vertexB = edge.getVertices();
+    vertexA.visited = true;
+    vertexB.visited = true;
+    // If nodes of the edge belong to distinct sets,
+    // remove that edge and join the two distinct sets
+    if (ds.find(vertexA) !== ds.find(vertexB)) {
+      removeWallsBetween(vertexA, vertexB);
+      ds.union(vertexA, vertexB);
+    }
+  }
+  `; }

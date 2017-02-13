@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pathfinding Algorithms</title>
+    <title>Maze Generation Algorithms</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
     <link rel="stylesheet" href="style.css"></link>
   </head>
@@ -11,16 +11,16 @@
     <!-- Header and footer -->
     <div class="navigation">
       <ul>
-        <li class="active">Depth First Search + Backtracking</li>
-        <li>Randomized Krusal's Algorithm</li>
-        <li>Randomized Prim's Algorithm</li>
-        <li>Recursive Division Method</li>
-        <li>Cellular Automaton</li>
+        <li id="depthFirstSearch" class="standby">Depth First Search + Backtracking</li>
+        <li id="kruskalAlgorithm" class="standby" >Randomized Kruskal's Algorithm</li>
+        <li class="soon">Randomized Prim's Algorithm</li>
+        <li class="soon">Recursive Division Method</li>
+        <li class="soon">Cellular Automaton</li>
       </ul>
     </div>
     <div class="footer"><small><a href="https://edmundkorley.com">Edmund Korley</a>, 2017.</small></div>
 
-    <pre><code class="javascript">
+    <pre><code id="algorithm" class="javascript">
       // Given a grid (array-like representation of maze) and stack,
       // make the center cell the current cell and mark it as visited
       let current = grid[middle];
@@ -44,7 +44,7 @@
         }
       }
     </code></pre>
-    <div class="descript">
+    <div id="descript">
       A maze generator that uses a randomized depth-first search approach with a <em>recursive</em> backtracker.
       You may use actual function recursion and the call stack to implement this or, in our case, a stack (on the heap) for lighter stack frames.
       This algorithm can be abstracted as the following routine:
@@ -52,13 +52,13 @@
     <script src="//cdn.jsdelivr.net/highlight.js/9.9.0/highlight.min.js" charset="utf-8"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js" charset="utf-8"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/addons/p5.dom.js" charset="utf-8"></script>
-    <script src="scripts/index.js"></script>
     <script src="scripts/depthFirstSearch.js"></script>
     <script src="scripts/cell.js"></script>
-    <script src="scripts/krusalAlgorithm.js"></script>
+    <script src="scripts/kruskalAlgorithm.js"></script>
     <script src="scripts/disjointSet.js"></script>
     <script src="scripts/primAlgorithm.js"></script>
     <script src="scripts/recursiveDivision.js"></script>
     <script src="scripts/cellularAutomaton.js"></script>
+    <script src="scripts/index.js"></script>
   </body>
 </html>

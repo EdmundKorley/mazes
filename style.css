@@ -10,13 +10,12 @@ body {
   display: flex;
   flex-direction: column-reverse;
   font-family: 'Source Serif Pro', serif;
-  /* This centers our canvas horizontally. */
-  justify-content: center;
-  /* This centers our canvas vertically. */
+  justify-content: flex-end;
   align-items: center;
+  padding-top: 150px;
 }
 
-.descript {
+#descript {
   padding: 1em;
   max-width: 450px;
 }
@@ -27,7 +26,7 @@ body {
   width: 100%;
 }
 
-.navigation li:hover {
+.navigation .standby:hover {
   text-decoration: underline green;
   cursor: pointer;
 }
@@ -46,4 +45,12 @@ a {
 }
 a:visited {
   color: green;
+}
+
+.soon {
+  color: grey;
+}
+.soon:visited {
+  color: grey;
+  text-decoration: underline white;
 }

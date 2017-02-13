@@ -1,1 +1,1 @@
-# Pathfinding Algorithms
+# Maze Generation Algorithms

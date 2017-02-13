@@ -63,7 +63,7 @@ Kruskal.prototype.algorithm = function () { return `
   const ds = new DisjointSet(grid);
   // While there are unvisited edges
   while (grid.hasUnvisitedEgdes()) {
-    // Pick a random unvisited neighbor
+    // Pick a random unvisited edge
     edge = grid.spliceRandomEdge();
     vertexA, vertexB = edge.getVertices();
     vertexA.visited = true;
